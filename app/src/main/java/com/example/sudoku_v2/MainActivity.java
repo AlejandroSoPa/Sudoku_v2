@@ -84,20 +84,23 @@ public class MainActivity extends AppCompatActivity{
             }
             tabla.addView(row);
         }
-        refrescarGUI();
+        deshabilitar();
     }
 
     private void refrescarGUI(){
         for(int i=0;i<9;i++) {
-
             for (int j = 0; j < 9; j++) {
+                matriz[i][j].setSelection(Sudoku.getVal(i,j));
+            }
+        }
+    }
 
-                if (matriz[i][j].getSelectedItem() != " "){
-                    matriz[i][j].setSelection(Sudoku.getVal(i,j));
+    public void deshabilitar() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (Sudoku.getVal(i,j) != 0) {
+                    matriz[i][j].setSelection(Sudoku.getVal(i, j));
                     matriz[i][j].setEnabled(false);
-                }else {
-                    matriz[i][j].setSelection(Sudoku.getVal(i,j));
-                    matriz[i][j].setEnabled(true);
                 }
             }
         }
