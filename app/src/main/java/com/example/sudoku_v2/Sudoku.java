@@ -123,12 +123,14 @@ public class Sudoku extends AppCompatActivity {
 
     public static void creaPartida(){
         start();
-        int fila=0;
-        int col=0;
-        for (int j = 0; j < 70; j++) {
-            fila = (int) (Math.random() * 9);
-            col = (int) (Math.random() * 9);
-            matrizSudoku[fila][col] = 0;
+        int valsInis = (int) (Math.random() * 17) + 17;
+        while (valsInis > 0) {
+            int fila = (int) (Math.random() * 9);
+            int col = (int) (Math.random() * 9);
+            if (getVal(fila, col) == 0) {
+                setVal(fila, col, (int) (Math.random() * 8) + 1);
+                valsInis--;
+            }
         }
     }
 }
